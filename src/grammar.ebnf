@@ -1,0 +1,88 @@
+(* ============================================================ *)
+(*  CodeΩ (.cω) — Grammaire Formelle EBNF v1.0                 *)
+(*  Règle Ω absolue : |output| < |input| ∧ E(output) < E(input)*)
+(* ============================================================ *)
+
+program         = { statement } EOF ;
+
+statement       = node_decl
+                | axiom_decl
+                | propagation
+                | assignment
+                | if_expr
+                | loop_expr
+                | return_stmt
+                | compress_stmt
+                | prove_stmt
+                | comment ;
+
+(* ── Déclarations ─────────────────────────────────────────── *)
+node_decl       = "Ω:" IDENT "{" { statement } "}" ;
+axiom_decl      = "U·" DIGIT+ ":" IDENT "=" expr ";" ;
+propagation     = "→" IDENT "(" [ arg_list ] ")" ";" ;
+assignment      = IDENT ":=" expr ";" ;
+
+(* ── Types primitifs ──────────────────────────────────────── *)
+type            = "int" | "float" | "bool" | "str"
+                | "node" | "signal" | "axiom" | "void" ;
+
+typed_ident     = IDENT ":" type ;
+arg_list        = expr { "," expr } ;
+param_list      = typed_ident { "," typed_ident } ;
+
+(* ── Expressions (ordre de priorité croissant) ────────────── *)
+expr            = or_expr ;
+or_expr         = and_expr  { "||" and_expr } ;
+and_expr        = eq_expr   { "&&" eq_expr } ;
+eq_expr         = cmp_expr  { ( "==" | "!=" ) cmp_expr } ;
+cmp_expr        = add_expr  { ( "<" | ">" | "<=" | ">=" ) add_expr } ;
+add_expr        = mul_expr  { ( "+" | "-" ) mul_expr } ;
+mul_expr        = unary     { ( "*" | "/" | "%" ) unary } ;
+unary           = ( "!" | "-" ) unary | postfix ;
+postfix         = primary { "." IDENT | "[" expr "]" | "(" [ arg_list ] ")" } ;
+primary         = NUMBER | STRING | BOOL | IDENT
+                | "(" expr ")"
+                | lambda
+                | node_ref ;
+
+lambda          = "λ" "(" [ param_list ] ")" "→" expr ;
+node_ref        = "Ω" "." IDENT ;
+
+(* ── Flux de contrôle ─────────────────────────────────────── *)
+if_expr         = "if" expr "{" { statement } "}"
+                  [ "else" "{" { statement } "}" ] ;
+
+loop_expr       = "loop" expr "{" { statement } "}" ;
+return_stmt     = "↩" expr ";" ;
+
+(* ── Primitives Ω ─────────────────────────────────────────── *)
+compress_stmt   = "⊗" IDENT [ "→" IDENT ] ";" ;
+prove_stmt      = "⊢" expr [ "label" STRING ] ";" ;
+
+(* ── Sémantique des axiomes (annotations) ────────────────── *)
+(*  U·01 existence     : tout nœud doit s'initialiser         *)
+(*  U·02 mesure        : ρ = |compressed|/|original| ∈ (0,1)  *)
+(*  U·03 protection    : zones adjacentes jamais modifiées     *)
+(*  U·06 vérité        : ⊢ rejette résultats sans preuve       *)
+(*  U·12 snapshot      : état capturé avant transformation     *)
+(*  U·14 factorisation : toute répétition ≥3× → référence      *)
+(*  U·Ω  continuité    : compilation continue si score partiel *)
+
+(* ── Règle Ω (contrainte dure) ──────────────────────────────*)
+(*  weight(output) < weight(input)                            *)
+(*  entropy(output) < entropy(input)                          *)
+(*  Si violée → erreur fatale Ω-VIOLATION                     *)
+
+(* ── Tokens ───────────────────────────────────────────────── *)
+IDENT           = LETTER { LETTER | DIGIT | "_" } ;
+NUMBER          = INT | FLOAT ;
+INT             = DIGIT+ ;
+FLOAT           = DIGIT+ "." DIGIT+ ;
+STRING          = '"' { CHAR } '"' ;
+BOOL            = "true" | "false" ;
+DIGIT           = "0" … "9" ;
+LETTER          = "a" … "z" | "A" … "Z" ;
+comment         = "//" { CHAR } NEWLINE
+                | "/*" { CHAR } "*/" ;
+
+EOF             = (* fin de fichier *) ;
