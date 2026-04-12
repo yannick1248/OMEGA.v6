@@ -1,0 +1,10 @@
+{
+  "goal": "Ensure CodeΩ can replace internal logic while preserving external dependency contracts.",
+  "dependencies": [
+    { "name": "HL7/FHIR Adapter", "contract": "stable", "parity": "pass" },
+    { "name": "IndexedDB Local Store", "contract": "stable", "parity": "pass" },
+    { "name": "Offline Service Worker", "contract": "stable", "parity": "pass" },
+    { "name": "Runtime API (NEWS2/qSOFA/Glasgow)", "contract": "stable", "parity": "pass" },
+    { "name": "Legacy Replit UI parity", "contract": "partial", "parity": "pending" }
+  ]
+}

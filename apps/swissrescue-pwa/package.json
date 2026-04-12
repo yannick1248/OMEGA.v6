@@ -1,0 +1,9 @@
+{
+  "name": "swissrescue-pwa",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "build": "node ../../scripts/build_pwa.js",
+    "check": "node ../../scripts/check_pwa_offline.js"
+  }
+}

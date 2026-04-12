@@ -1,0 +1,33 @@
+{
+  "date": "2026-04-12",
+  "legal_forum": "Geneva, Switzerland",
+  "models": [
+    {
+      "name": "Omega AI v0.1",
+      "clinical_accuracy": 93,
+      "proof_validity_rate": 0.99,
+      "safety_violation_rate": 0.0,
+      "latency_ms_p95": 340,
+      "offline_readiness": 1.0,
+      "compactness_rho": 0.89
+    },
+    {
+      "name": "Model-X Market",
+      "clinical_accuracy": 90,
+      "proof_validity_rate": 0.95,
+      "safety_violation_rate": 0.01,
+      "latency_ms_p95": 420,
+      "offline_readiness": 0.4,
+      "compactness_rho": 1.12
+    },
+    {
+      "name": "Model-Y Market",
+      "clinical_accuracy": 91,
+      "proof_validity_rate": 0.96,
+      "safety_violation_rate": 0.02,
+      "latency_ms_p95": 390,
+      "offline_readiness": 0.5,
+      "compactness_rho": 1.03
+    }
+  ]
+}

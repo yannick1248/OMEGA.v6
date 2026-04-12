@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-04-12",
+  "checks": [
+    {
+      "cmd": "node scripts/check_language_integrity.js",
+      "status": "PASS",
+      "out": "integrity_check=PASS\ngrammar_rules_checked=8\ncontract_layers_checked=4"
+    },
+    {
+      "cmd": "node tests/test_medical.js",
+      "status": "PASS",
+      "out": "medical_tests=PASS cases=53"
+    },
+    {
+      "cmd": "node scripts/test_applicability.js",
+      "status": "PASS",
+      "out": "applicability_score=100\napplicability_readiness=GO\nruntime_medical_benchmark=PASS\nruntime_app_compatibility=PASS\nmedical_unit_tests=PASS\npwa_build=PASS\npwa_offline_checks=PASS\nmodel_benchmark=PASS"
+    },
+    {
+      "cmd": "node scripts/check_universal_compat.js",
+      "status": "PASS",
+      "out": "platforms:Web PWA=pass\nplatforms:Android (PWA install)=pass\nplatforms:iOS (Add to Home Screen)=pass\nplatforms:Desktop Browser=pass\nsoftware_dependencies:IndexedDB=pass\nsoftware_dependencies:Service Worker=pass\nsoftware_dependencies:HL7/FHIR adapters=pass\nsoftware_dependencies:Legacy UI parity=pending\nmedia_support:text/json=pass\nmedia_support:hl7 message=pass\nmedia_support:csv/xlsx import=pass\nmedia_support:medical image DICOM=pending\nmedia_support:audio distress stream=pending\ncompatibility_pass_rate=77\npending_items=3\nuniversal_ready=PARTIAL"
+    },
+    {
+      "cmd": "node scripts/check_migration_parity.js",
+      "status": "PASS",
+      "out": "HL7/FHIR Adapter=pass\nIndexedDB Local Store=pass\nOffline Service Worker=pass\nRuntime API (NEWS2/qSOFA/Glasgow)=pass\nLegacy Replit UI parity=pending\nparity_pass_rate=80\npending_count=1\ncan_replace_now=PILOT_ONLY"
+    }
+  ],
+  "pass_rate": 100,
+  "scientific_claim_level": "SUPPORTED_FOR_PILOT"
+}

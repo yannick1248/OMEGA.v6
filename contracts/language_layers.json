@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "goal": "Define interoperability contracts between CodeΩ language layers and host runtime.",
+  "layers": [
+    {
+      "name": "lexer_parser",
+      "input": "*.cw source",
+      "output": "AST",
+      "required_primitives": ["node_decl", "axiom_decl", "prove_stmt", "compress_stmt"],
+      "compatibility_guards": ["unicode_tokens_supported", "operator_precedence_stable"]
+    },
+    {
+      "name": "interpreter_core",
+      "input": "AST",
+      "output": "runtime_state + proofs",
+      "required_primitives": ["assignment", "if_expr", "loop_expr", "propagation"],
+      "compatibility_guards": ["proof_engine_deterministic", "safe_unknown_function_errors"]
+    },
+    {
+      "name": "medical_builtins",
+      "input": "typed numeric/string args",
+      "output": "deterministic scores",
+      "required_primitives": ["NEWS2", "qSOFA", "Glasgow", "BMI", "eGFR"],
+      "compatibility_guards": ["stable_thresholds", "explicit_risk_labels"]
+    },
+    {
+      "name": "application_adapter",
+      "input": "runtime outputs",
+      "output": "UI/API payloads",
+      "required_primitives": ["output", "print", "JSON payload"],
+      "compatibility_guards": ["schema_versioning", "rollback_safe"]
+    }
+  ]
+}
