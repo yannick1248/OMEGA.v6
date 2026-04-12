@@ -1,0 +1,6 @@
+{
+  "dataset_lines": 8,
+  "iterations": 100,
+  "final_training_score": 88.83,
+  "note": "Simulation loop for continuous offline improvement workflow."
+}

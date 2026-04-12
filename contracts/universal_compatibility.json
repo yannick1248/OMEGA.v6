@@ -1,0 +1,21 @@
+{
+  "platforms": [
+    { "name": "Web PWA", "status": "pass" },
+    { "name": "Android (PWA install)", "status": "pass" },
+    { "name": "iOS (Add to Home Screen)", "status": "pass" },
+    { "name": "Desktop Browser", "status": "pass" }
+  ],
+  "software_dependencies": [
+    { "name": "IndexedDB", "status": "pass" },
+    { "name": "Service Worker", "status": "pass" },
+    { "name": "HL7/FHIR adapters", "status": "pass" },
+    { "name": "Legacy UI parity", "status": "pending" }
+  ],
+  "media_support": [
+    { "type": "text/json", "status": "pass" },
+    { "type": "hl7 message", "status": "pass" },
+    { "type": "csv/xlsx import", "status": "pass" },
+    { "type": "medical image DICOM", "status": "pending" },
+    { "type": "audio distress stream", "status": "pending" }
+  ]
+}

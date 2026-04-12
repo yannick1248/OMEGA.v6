@@ -1,0 +1,12 @@
+{
+  "organization": "SwissRescue OmniMed Foundation",
+  "country": "Switzerland",
+  "legal_forum": "Geneva, Switzerland",
+  "data_residency": "Switzerland only",
+  "principles": [
+    "Primum non nocere",
+    "Proof before claim",
+    "Offline-first safety",
+    "No unverifiable superiority claims"
+  ]
+}

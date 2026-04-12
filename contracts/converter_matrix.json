@@ -1,0 +1,12 @@
+{
+  "target": "omega_ir_v1",
+  "languages": [
+    { "lang": "js", "status": "supported" },
+    { "lang": "ts", "status": "supported" },
+    { "lang": "py", "status": "supported" },
+    { "lang": "rs", "status": "supported" },
+    { "lang": "c", "status": "supported" },
+    { "lang": "cw", "status": "native" }
+  ],
+  "policy": "All adapters must preserve input payload and emit deterministic Omega IR envelope."
+}

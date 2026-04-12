@@ -1,0 +1,36 @@
+{
+  "total": 7,
+  "pass": 7,
+  "fail": 0,
+  "robustness_rate": 100,
+  "faults": [
+    {
+      "name": "NEWS2_null_avpu",
+      "status": "PASS"
+    },
+    {
+      "name": "NEWS2_string_numbers",
+      "status": "PASS"
+    },
+    {
+      "name": "qSOFA_nan",
+      "status": "PASS"
+    },
+    {
+      "name": "Glasgow_missing",
+      "status": "PASS"
+    },
+    {
+      "name": "BMI_zero_height",
+      "status": "PASS"
+    },
+    {
+      "name": "eGFR_string",
+      "status": "PASS"
+    },
+    {
+      "name": "Parser_invalid_syntax",
+      "status": "PASS"
+    }
+  ]
+}
